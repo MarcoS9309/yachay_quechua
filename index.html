@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprende Quechua - Página Interactiva</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <h1 class="logo">Yachay Quechua</h1>
+                <ul class="nav-menu">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#lecciones" class="nav-link">Lecciones</a></li>
+                    <li><a href="#vocabulario" class="nav-link">Vocabulario</a></li>
+                    <li><a href="#ejercicios" class="nav-link">Ejercicios</a></li>
+                    <li><a href="#cultura" class="nav-link">Cultura</a></li>
+                </ul>
+                <button class="nav-toggle">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección Inicio -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h2>Allin Kausay - Bienvenido</h2>
+                <p>Aprende quechua de manera interactiva y divertida</p>
+                <p class="quechua-phrase">"Rimaykullayki quechua simita" - Te enseño el idioma quechua</p>
+                <button class="cta-button" onclick="QuechuaApp.mostrarSeccion('lecciones')">Comenzar a Aprender</button>
+            </div>
+        </section>
+
+        <!-- Sección Lecciones -->
+        <section id="lecciones" class="section">
+            <div class="container">
+                <h2>Lecciones Básicas</h2>
+                <div class="lessons-grid">
+                    <div class="lesson-card" onclick="QuechuaApp.abrirLeccion('saludos')">
+                        <h3>Lección 1: Saludos</h3>
+                        <p>Aprende los saludos básicos en quechua</p>
+                        <span class="quechua-text">Rimay - Hablar</span>
+                    </div>
+                    <div class="lesson-card" onclick="QuechuaApp.abrirLeccion('familia')">
+                        <h3>Lección 2: La Familia</h3>
+                        <p>Vocabulario sobre miembros de la familia</p>
+                        <span class="quechua-text">Ayllu - Familia</span>
+                    </div>
+                    <div class="lesson-card" onclick="QuechuaApp.abrirLeccion('numeros')">
+                        <h3>Lección 3: Números</h3>
+                        <p>Los números del 1 al 20 en quechua</p>
+                        <span class="quechua-text">Yupay - Contar</span>
+                    </div>
+                    <div class="lesson-card" onclick="QuechuaApp.abrirLeccion('colores')">
+                        <h3>Lección 4: Colores</h3>
+                        <p>Aprende los colores principales</p>
+                        <span class="quechua-text">Llimphi - Color</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Vocabulario -->
+        <section id="vocabulario" class="section">
+            <div class="container">
+                <h2>Vocabulario Interactivo</h2>
+                <div class="vocab-controls">
+                    <select id="categoriaSelect" onchange="QuechuaApp.cambiarCategoria()">
+                        <option value="basico">Vocabulario Básico</option>
+                        <option value="familia">Familia</option>
+                        <option value="naturaleza">Naturaleza</option>
+                        <option value="comida">Comida</option>
+                    </select>
+                </div>
+                <div id="vocabulario-contenido" class="vocab-grid">
+                    <!-- El contenido se carga dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Ejercicios -->
+        <section id="ejercicios" class="section">
+            <div class="container">
+                <h2>Ejercicios Interactivos</h2>
+                <div class="exercise-types">
+                    <button class="exercise-btn" onclick="QuechuaApp.iniciarEjercicio('traduccion')">
+                        Ejercicio de Traducción
+                    </button>
+                    <button class="exercise-btn" onclick="QuechuaApp.iniciarEjercicio('audio')">
+                        Pronunciación
+                    </button>
+                    <button class="exercise-btn" onclick="QuechuaApp.iniciarEjercicio('memoria')">
+                        Juego de Memoria
+                    </button>
+                </div>
+                <div id="ejercicio-contenido" class="exercise-content">
+                    <p>Selecciona un tipo de ejercicio para comenzar</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Cultura -->
+        <section id="cultura" class="section">
+            <div class="container">
+                <h2>Cultura Andina</h2>
+                <div class="culture-grid">
+                    <div class="culture-card">
+                        <h3>Historia del Quechua</h3>
+                        <p>Conoce la rica historia de este idioma ancestral hablado por millones de personas en los Andes.</p>
+                    </div>
+                    <div class="culture-card">
+                        <h3>Tradiciones</h3>
+                        <p>Explora las tradiciones y costumbres de los pueblos quechuahablantes.</p>
+                    </div>
+                    <div class="culture-card">
+                        <h3>Música y Arte</h3>
+                        <p>Descubre la música, el arte y las expresiones culturales andinas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para lecciones detalladas -->
+    <div id="leccionModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="QuechuaApp.cerrarModal()">&times;</span>
+            <div id="leccionDetalle">
+                <!-- Contenido de la lección se carga aquí -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Yachay Quechua - Aprende el idioma de los Andes</p>
+            <p class="quechua-text">Kusay kani - Con cariño</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
