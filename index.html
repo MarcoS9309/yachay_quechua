@@ -3,145 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aprende Quechua - Página Interactiva</title>
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; img-src 'self' data:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    
+    <!-- SEO and Social Media Meta Tags -->
+    <title>Yachay Quechua - Aprende Quechua Interactivamente</title>
+    <meta name="description" content="Plataforma interactiva para aprender quechua (kichwa) con lecciones, vocabulario, ejercicios y cultura andina. Aprende el idioma ancestral de los Andes.">
+    <meta name="keywords" content="quechua, kichwa, idioma andino, aprender quechua, vocabulario quechua, cultura andina, lenguas originarias">
+    <meta name="author" content="Yachay Quechua">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Yachay Quechua - Aprende Quechua Interactivamente">
+    <meta property="og:description" content="Plataforma interactiva para aprender quechua con lecciones, vocabulario y ejercicios.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Yachay Quechua - Aprende Quechua">
+    <meta name="twitter:description" content="Aprende el idioma quechua de manera interactiva y divertida.">
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Styles with fallback -->
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Fallback for fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        /* Fallback font stack if Google Fonts fails */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
+    <header class="header" role="banner">
+        <nav class="nav" role="navigation" aria-label="Navegación principal">
             <div class="nav-container">
                 <h1 class="logo">Yachay Quechua</h1>
-                <ul class="nav-menu">
-                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                    <li><a href="#lecciones" class="nav-link">Lecciones</a></li>
-                    <li><a href="#vocabulario" class="nav-link">Vocabulario</a></li>
-                    <li><a href="#ejercicios" class="nav-link">Ejercicios</a></li>
-                    <li><a href="#cultura" class="nav-link">Cultura</a></li>
+                <ul class="nav-menu" role="menubar">
+                    <li role="none"><a href="#inicio" class="nav-link" role="menuitem" aria-label="Ir a la sección de inicio">Inicio</a></li>
+                    <li role="none"><a href="#lecciones" class="nav-link" role="menuitem" aria-label="Ir a las lecciones">Lecciones</a></li>
+                    <li role="none"><a href="#vocabulario" class="nav-link" role="menuitem" aria-label="Ir al vocabulario">Vocabulario</a></li>
+                    <li role="none"><a href="#ejercicios" class="nav-link" role="menuitem" aria-label="Ir a los ejercicios">Ejercicios</a></li>
+                    <li role="none"><a href="#cultura" class="nav-link" role="menuitem" aria-label="Ir a la información cultural">Cultura</a></li>
                 </ul>
-                <button class="nav-toggle">☰</button>
+                <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">☰</button>
             </div>
         </nav>
     </header>
 
     <main>
         <!-- Sección Inicio -->
-        <section id="inicio" class="hero">
+        <section id="inicio" class="hero" role="main" aria-labelledby="hero-heading">
             <div class="hero-content">
-                <h2>Allin Kausay - Bienvenido</h2>
+                <h2 id="hero-heading">Allin Kausay - Bienvenido</h2>
                 <p>Aprende quechua de manera interactiva y divertida</p>
-                <p class="quechua-phrase">"Rimaykullayki quechua simita" - Te enseño el idioma quechua</p>
-                <button class="cta-button" onclick="QuechuaApp.mostrarSeccion('lecciones')">Comenzar a Aprender</button>
+                <p class="quechua-phrase" lang="qu">"Rimaykullayki quechua simita" - Te enseño el idioma quechua</p>
+                <button class="cta-button" data-action="mostrar-seccion" data-target="lecciones" aria-label="Comenzar a aprender quechua">Comenzar a Aprender</button>
             </div>
         </section>
 
         <!-- Sección Lecciones -->
-        <section id="lecciones" class="section">
+        <section id="lecciones" class="section" role="region" aria-labelledby="lecciones-heading">
             <div class="container">
-                <h2>Lecciones Básicas</h2>
-                <div class="lessons-grid">
-                    <div class="lesson-card" onclick="QuechuaApp.abrirLeccion('saludos')">
+                <h2 id="lecciones-heading">Lecciones Básicas</h2>
+                <div class="lessons-grid" role="group" aria-label="Lista de lecciones disponibles">
+                    <div class="lesson-card" data-action="abrir-leccion" data-lesson="saludos" role="button" tabindex="0" aria-label="Abrir lección 1: Saludos en quechua">
                         <h3>Lección 1: Saludos</h3>
                         <p>Aprende los saludos básicos en quechua</p>
-                        <span class="quechua-text">Rimay - Hablar</span>
+                        <span class="quechua-text" lang="qu">Rimay - Hablar</span>
                     </div>
-                    <div class="lesson-card" onclick="QuechuaApp.abrirLeccion('familia')">
+                    <div class="lesson-card" data-action="abrir-leccion" data-lesson="familia" role="button" tabindex="0" aria-label="Abrir lección 2: La familia en quechua">
                         <h3>Lección 2: La Familia</h3>
                         <p>Vocabulario sobre miembros de la familia</p>
-                        <span class="quechua-text">Ayllu - Familia</span>
+                        <span class="quechua-text" lang="qu">Ayllu - Familia</span>
                     </div>
-                    <div class="lesson-card" onclick="QuechuaApp.abrirLeccion('numeros')">
+                    <div class="lesson-card" data-action="abrir-leccion" data-lesson="numeros" role="button" tabindex="0" aria-label="Abrir lección 3: Números en quechua">
                         <h3>Lección 3: Números</h3>
                         <p>Los números del 1 al 20 en quechua</p>
-                        <span class="quechua-text">Yupay - Contar</span>
+                        <span class="quechua-text" lang="qu">Yupay - Contar</span>
                     </div>
-                    <div class="lesson-card" onclick="QuechuaApp.abrirLeccion('colores')">
+                    <div class="lesson-card" data-action="abrir-leccion" data-lesson="colores" role="button" tabindex="0" aria-label="Abrir lección 4: Colores en quechua">
                         <h3>Lección 4: Colores</h3>
                         <p>Aprende los colores principales</p>
-                        <span class="quechua-text">Llimphi - Color</span>
+                        <span class="quechua-text" lang="qu">Llimphi - Color</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Sección Vocabulario -->
-        <section id="vocabulario" class="section">
+        <section id="vocabulario" class="section" role="region" aria-labelledby="vocabulario-heading">
             <div class="container">
-                <h2>Vocabulario Interactivo</h2>
+                <h2 id="vocabulario-heading">Vocabulario Interactivo</h2>
                 <div class="vocab-controls">
-                    <select id="categoriaSelect" onchange="QuechuaApp.cambiarCategoria()">
+                    <label for="categoriaSelect" class="sr-only">Seleccionar categoría de vocabulario</label>
+                    <select id="categoriaSelect" data-action="cambiar-categoria" aria-label="Categoría de vocabulario">
                         <option value="basico">Vocabulario Básico</option>
                         <option value="familia">Familia</option>
                         <option value="naturaleza">Naturaleza</option>
                         <option value="comida">Comida</option>
                     </select>
                 </div>
-                <div id="vocabulario-contenido" class="vocab-grid">
+                <div id="vocabulario-contenido" class="vocab-grid" role="region" aria-live="polite" aria-label="Palabras de vocabulario">
                     <!-- El contenido se carga dinámicamente -->
                 </div>
             </div>
         </section>
 
         <!-- Sección Ejercicios -->
-        <section id="ejercicios" class="section">
+        <section id="ejercicios" class="section" role="region" aria-labelledby="ejercicios-heading">
             <div class="container">
-                <h2>Ejercicios Interactivos</h2>
-                <div class="exercise-types">
-                    <button class="exercise-btn" onclick="QuechuaApp.iniciarEjercicio('traduccion')">
+                <h2 id="ejercicios-heading">Ejercicios Interactivos</h2>
+                <div class="exercise-types" role="group" aria-label="Tipos de ejercicios disponibles">
+                    <button class="exercise-btn" data-action="iniciar-ejercicio" data-exercise="traduccion" aria-label="Iniciar ejercicio de traducción">
                         Ejercicio de Traducción
                     </button>
-                    <button class="exercise-btn" onclick="QuechuaApp.iniciarEjercicio('audio')">
+                    <button class="exercise-btn" data-action="iniciar-ejercicio" data-exercise="audio" aria-label="Iniciar ejercicio de pronunciación">
                         Pronunciación
                     </button>
-                    <button class="exercise-btn" onclick="QuechuaApp.iniciarEjercicio('memoria')">
+                    <button class="exercise-btn" data-action="iniciar-ejercicio" data-exercise="memoria" aria-label="Iniciar juego de memoria">
                         Juego de Memoria
                     </button>
                 </div>
-                <div id="ejercicio-contenido" class="exercise-content">
+                <div id="ejercicio-contenido" class="exercise-content" role="region" aria-live="polite" aria-label="Contenido del ejercicio">
                     <p>Selecciona un tipo de ejercicio para comenzar</p>
                 </div>
             </div>
         </section>
 
         <!-- Sección Cultura -->
-        <section id="cultura" class="section">
+        <section id="cultura" class="section" role="region" aria-labelledby="cultura-heading">
             <div class="container">
-                <h2>Cultura Andina</h2>
-                <div class="culture-grid">
-                    <div class="culture-card">
+                <h2 id="cultura-heading">Cultura Andina</h2>
+                <div class="culture-grid" role="group" aria-label="Información cultural andina">
+                    <article class="culture-card">
                         <h3>Historia del Quechua</h3>
                         <p>Conoce la rica historia de este idioma ancestral hablado por millones de personas en los Andes.</p>
-                    </div>
-                    <div class="culture-card">
+                    </article>
+                    <article class="culture-card">
                         <h3>Tradiciones</h3>
                         <p>Explora las tradiciones y costumbres de los pueblos quechuahablantes.</p>
-                    </div>
-                    <div class="culture-card">
+                    </article>
+                    <article class="culture-card">
                         <h3>Música y Arte</h3>
                         <p>Descubre la música, el arte y las expresiones culturales andinas.</p>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Modal para lecciones detalladas -->
-    <div id="leccionModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="QuechuaApp.cerrarModal()">&times;</span>
-            <div id="leccionDetalle">
+    <div id="leccionModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-content" role="document">
+            <button class="close" data-action="cerrar-modal" aria-label="Cerrar lección">&times;</button>
+            <div id="leccionDetalle" role="main">
                 <!-- Contenido de la lección se carga aquí -->
             </div>
         </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <p>&copy; 2025 Yachay Quechua - Aprende el idioma de los Andes</p>
-            <p class="quechua-text">Kusay kani - Con cariño</p>
+            <p class="quechua-text" lang="qu">Kusay kani - Con cariño</p>
         </div>
     </footer>
 
+    <!-- Loading indicator -->
+    <div id="loading" class="loading-indicator" aria-hidden="true" role="status" aria-label="Cargando">
+        <div class="spinner"></div>
+        <span class="sr-only">Cargando...</span>
+    </div>
+
     <script src="js/script.js"></script>
+    
+    <!-- Screen reader only styles -->
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        .loading-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+        
+        .loading-indicator.show {
+            display: flex;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-color, #8B4513);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </body>
 </html>

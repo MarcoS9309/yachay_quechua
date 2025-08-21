@@ -608,3 +608,161 @@ body {
         transform: translateY(0);
     }
 }
+
+/* Notificaciones del sistema */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    color: white;
+    font-weight: 500;
+    box-shadow: var(--shadow);
+    z-index: 10001;
+    max-width: 300px;
+    animation: slideInRight 0.3s ease;
+}
+
+.notification--success {
+    background-color: #28a745;
+}
+
+.notification--error {
+    background-color: #dc3545;
+}
+
+.notification--warning {
+    background-color: #ffc107;
+    color: var(--text-color);
+}
+
+.notification--info {
+    background-color: #17a2b8;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Mejoras de accesibilidad */
+.modal-open {
+    overflow: hidden;
+}
+
+/* Focus visible para navegación por teclado */
+button:focus-visible,
+.lesson-card:focus-visible,
+.vocab-card:focus-visible,
+.nav-link:focus-visible,
+[role="button"]:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Estilos para lectores de pantalla */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Mejoras para cards interactivos */
+.lesson-card[role="button"],
+.vocab-card[tabindex="0"] {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lesson-card[role="button"]:hover,
+.lesson-card[role="button"]:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.15);
+}
+
+.vocab-card[tabindex="0"]:hover,
+.vocab-card[tabindex="0"]:focus {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(139, 69, 19, 0.2);
+}
+
+/* Mejoras para navegación */
+.nav-link.active {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.nav-menu.active {
+    display: flex;
+}
+
+/* Estilos para elementos con estado de carga */
+[aria-hidden="true"] {
+    display: none !important;
+}
+
+/* Mejoras para el modal */
+.modal[aria-hidden="true"] {
+    display: none !important;
+}
+
+.modal[aria-hidden="false"] {
+    display: block !important;
+}
+
+/* Mejoras para audio buttons con feedback */
+.audio-btn[aria-pressed="true"] {
+    background-color: var(--accent-color) !important;
+    transform: scale(0.95);
+}
+
+/* Contenedor para frases con mejor espaciado */
+.phrase-container {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-left: 3px solid var(--accent-color);
+    background-color: rgba(218, 165, 32, 0.1);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+/* Responsive improvements para accesibilidad */
+@media (max-width: 768px) {
+    .notification {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+    
+    /* Mejoras para focus en móviles */
+    button:focus,
+    .lesson-card:focus,
+    .vocab-card:focus {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 1px;
+    }
+}
+
+/* Reducir animaciones para usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in,
+    .slide-up,
+    .notification,
+    .lesson-card,
+    .vocab-card {
+        animation: none !important;
+        transition: none !important;
+    }
+}
